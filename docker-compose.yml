@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  mkdocs-app:
+    container_name: material-mkdocs-1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ngyngcphu/mkdocs:apt-material
+    volumes: [.:/doc]
+    ports:
+      - 8000:8000
+    command: ["serve", "-a", "0.0.0.0:8000"]
