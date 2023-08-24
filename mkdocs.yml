@@ -31,4 +31,5 @@ theme:
         name: Switch to light mode
 
 nav:
+  - Home: index.md
   - Git workflow: git-workflow/index.md
