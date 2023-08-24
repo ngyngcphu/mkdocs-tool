@@ -1,3 +1,4 @@
-site_name: Nguyen Ngoc Phu
+site_name: TickLab
 theme:
   name: material
+  favicon: assets/logoTickLab.svg
