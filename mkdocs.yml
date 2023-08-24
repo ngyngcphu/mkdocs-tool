@@ -18,7 +18,7 @@ theme:
   logo: assets/logoTickLab.svg
   palette:
     - scheme: default
-      primary: white
+      primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
