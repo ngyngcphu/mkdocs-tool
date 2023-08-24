@@ -1,5 +1,18 @@
 site_name: TickLab
 theme:
   name: material
-  favicon: assets/logoTickLab.png
-  logo: assets/logoTickLab.png
+  favicon: assets/faviconTickLab.png
+  logo: assets/logoTickLab.svg
+  palette:
+    - scheme: default
+      primary: white
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
