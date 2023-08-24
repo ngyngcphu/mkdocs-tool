@@ -1,8 +1,19 @@
 site_name: TickLab
+site_url: https://ngyngcphu.github.io/mkdocs-tool/
+site_author: Nguyen Ngoc Phu
+
 repo_name: ngyngcphu/mkdocs-tool
 repo_url: https://github.com/ngyngcphu/mkdocs-tool
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
   favicon: assets/faviconTickLab.png
   logo: assets/logoTickLab.svg
   palette:
@@ -18,13 +29,6 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  features: 
-    - navigation.instant
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.sections
-    - navigation.indexes
-    - navigation.top
-    - toc.follow
+
 nav:
-  - Git workflow: git-workflow.md
+  - Git workflow: git-workflow/index.md
