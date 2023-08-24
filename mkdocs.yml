@@ -2,3 +2,4 @@ site_name: TickLab
 theme:
   name: material
   favicon: assets/logoTickLab.png
+  logo: assets/logoTickLab.png
