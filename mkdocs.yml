@@ -1,4 +1,6 @@
 site_name: TickLab
+repo_name: ngyngcphu/mkdocs-tool
+repo_url: https://github.com/ngyngcphu/mkdocs-tool
 theme:
   name: material
   favicon: assets/faviconTickLab.png
@@ -16,3 +18,13 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  feature: 
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+nav:
+  - Git workflow: git-workflow.md
