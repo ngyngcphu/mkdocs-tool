@@ -4,9 +4,13 @@
 This training is based on the git-workflow that the TickFlow team worked on and other references on the internet.
 
 ## The main branches
-A repository must have at least these two main branches:  
- 1. **main**: where the source code is stable and has been released to production.  
- 2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
+A repository must have at least these two main branches:
+<div class="annotate" markdown>
+
+1. **main**: where the source code is stable and has been released to production.  
+2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
+
+</div>
 
 **<u>Note</u>**: All branches above are protected to prevent direct commit.  
 
