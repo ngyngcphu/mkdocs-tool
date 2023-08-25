@@ -5,30 +5,30 @@ This training is based on the git-workflow that the TickFlow team worked on and 
 
 ## The main branches
 A repository must have at least these two main branches:  
-    1. **main**: where the source code is stable and has been released to production.  
-    2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
+ 1. **main**: where the source code is stable and has been released to production.  
+ 2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
 
 **<u>Note</u>**: All branches above are protected to prevent direct commit.  
 
 Follow these steps:  
-1. Clone a repository on github, example: [https://github.com/ngyngcphu/mkdocs-tool](https://github.com/ngyngcphu/mkdocs-tool)  
-2. Connect repository from local to remote:  
+ 1. Clone a repository on github, example: [https://github.com/ngyngcphu/mkdocs-tool](https://github.com/ngyngcphu/mkdocs-tool)  
+ 2. Connect repository from local to remote:  
     ```
     git remote add origin <remote_url>
     ```  
-3. Push branch **main** up to remote:  
+ 3. Push branch **main** up to remote:  
     ```
     git push origin main
     ```  
-4. Create branch **develop** from **main**:  
+ 4. Create branch **develop** from **main**:  
     ```
     git checkout -b develop main
     ```  
-5. Push branch **develop** up to remote:  
+ 5. Push branch **develop** up to remote:  
     ```
     git push origin develop
     ```  
-6. Set protection rules for 2 branches: **main** and **develop** at `Settings->Branches->Add branch protection rule`.  
+ 6. Set protection rules for 2 branches: **main** and **develop** at `Settings->Branches->Add branch protection rule`.  
 
 ## The supporting branches
 Besides the main branches, there will be support branches so that team members can work in parallel, easily track features, prepare for release or quickly fix production issues. These support branches will be **deleted** after using, including:  
@@ -52,7 +52,7 @@ Follow these steps:
     git push origin feature/part_1
     ```  
 After completing all the code in **feature/part_1**, make a Pull requests to **develop**, add reviewers.  
-**Note**: All conversations on code must be resolved before a pull request can be merged into a branch.  
+**<u>Note</u>**: All conversations on code must be resolved before a pull request can be merged into a branch.  
 After pull request has been merged into **develop** branch on remote. At local, checkout **develop**, delete **feature/part_1** and pull latest code from remote.
 ```
 git checkout develop
