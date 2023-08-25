@@ -1,8 +1,8 @@
-name: ci 
+name: cd
 on:
-  pull_request:
+  push:
     branches:
-      - develop
+      - main
 permissions:
   contents: write
 jobs:
