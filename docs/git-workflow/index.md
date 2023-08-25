@@ -51,7 +51,7 @@ Besides the main branches, there will be support branches so that team members c
 ### Feature branches
 - Branch off from: **develop**
 - Merge back into: **develop**
-- Branch naming convention: **feature/**
+- Branch naming convention: **feature/****
 
 Feature branches are used to develop new features for the upcoming releases. Each feature will be a separate branch, created from the latest source code of **develop**, example: **feature/project**, **feature/member**,... After completing the features, features branch will be merged into **develop** and deleted.  
 Follow these steps:
@@ -69,7 +69,7 @@ Follow these steps:
 
 </div>
 
-After completing all the code in **feature/part_1**, make a **Pull requests** to **develop**, add reviewers.
+After completing all the code in **feature/part_1**, make a **Pull requests** to **develop**. Then, add reviewers.
 
 **<u>Note</u>**: All conversations on code must be resolved before a pull request can be merged into a branch.
 
@@ -80,4 +80,4 @@ git branch -D feature/part_1
 git pull origin develop
 ```
 
-**<u>Note<u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**.
+**<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
