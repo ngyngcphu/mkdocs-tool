@@ -5,12 +5,13 @@ This training is based on the git-workflow that the TickFlow team worked on and 
 
 ## The main branches
 A repository must have at least these two main branches:  
-1. **main**: where the source code is stable and has been released to production.  
-2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
+    1. **main**: where the source code is stable and has been released to production.  
+    2. **develop**: where the source code is latest, ready to be merged into the **main** branch for the next release.
 
-**Note**: All branches above are protected to prevent direct commit.  
+**<u>Note</u>**: All branches above are protected to prevent direct commit.  
+
 Follow these steps:  
-1. Clone a repository on github, example: https://github.com/ngyngcphu/mkdocs-tool  
+1. Clone a repository on github, example: [https://github.com/ngyngcphu/mkdocs-tool](https://github.com/ngyngcphu/mkdocs-tool)  
 2. Connect repository from local to remote:  
     ```
     git remote add origin <remote_url>
