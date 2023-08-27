@@ -137,12 +137,30 @@ git pull origin develop
 
 **<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
 
-### Release Please Action
+### Release
 
+#### Github Action Workflows
+A workflow is a configurable automated process that will run one or more jobs. Workflows are defined by a YAML file in the `.github/workflows` directory of your repository, can be triggered by events like `push`, `pull-requests` or on a `schedule`.
 
-Follow these steps:
-<div class="annotate" markdown>
+Release workflow is defined in file `release.yml`.
 
+#### Release-please-action tool
+A tool auto-release with Conventional Commit Message. 
 
+Set up this action in `.github/workflows/release.yml`:
+```yml
+release:
+    runs-on: ubuntu-latest
+    outputs:
+      build: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          pull-request-header: 'Bot (:robot:) requested to create a new release on ${{ github.ref_name }}'
+```
+Also, let's create a `build` job to build a package on github container registry (ghcr). This package is a docker image used to run docker-compose.
 
-</div>
+### Hotfix branches
