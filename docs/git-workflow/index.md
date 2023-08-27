@@ -42,18 +42,73 @@ Follow these steps:
 Besides the main branches, there will be support branches so that team members can work in parallel, easily track features, prepare for release or quickly fix production issues. These support branches will be **deleted** after using, including:
 <div class="annotate" markdown>
 
-1. Feature branches  
-2. Release branches  
+1. Feature branches
+2. Release branches (Optional)
 3. Hotfix branches
 
 </div>
+
+Using the **release branches** may not be necessary. Instead, the TickFlow team used a tool that automatically generates releases based on conventional commits, that is [release-please-action](https://github.com/google-github-actions/release-please-action).
+
+### Conventional Commit Messages
+
+#### Summary
+The commit message should be structured as follows:
+```
+<type>[optional scope]: <description>
+```
+The following structural elements:
+<div class="annotate" markdown>
+
+1. **fix**: a commit of the type `fix` patches a bug in your codebase.
+2. **feat**: a commit of the type `feat` introduces a new feature to the codebase
+3. _types_ other than `fix:` and `feat:` are allowed, recommends `build:`, `chore:`, `ci:`, `docs:`, `style:`, `refactor:`, `perf:`, `test:`, and others (based on the [Angular convention](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines)).
+
+</div>
+
+A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., `feat(parser): add ability to parse arrays`. For more detailed information, refer to [Convention Commits](https://www.conventionalcommits.org/en/v1.0.0/).
+
+#### Commitlint tool
+Tool checks if your commit messages meet the conventional commit format, helps your team adhere to a commit convention.
+
+Follow these steps:
+<div class="annotate" markdown>
+
+1. Install:
+    ```
+    yarn add -D @commitlint/{config-conventional,cli}
+    ```
+2. Configure:
+    ```
+    echo "module.exports = {extends: ['@commitlint/config-conventional']}" > commitlint.config.js
+    ```
+3. To lint commits before they are created you can use Husky's `commit-msg` hook:
+    ```
+    yarn add -D husky
+    yarn husky install
+    ```
+4. Add hook:
+    ```
+    yarn husky add .husky/commit-msg  'yarn --no -- commitlint --edit ${1}'
+    ```
+5. Test the hook:
+    ![test-hook](../assets/test-hook.png)
+6. Add script in `package.json` to automatically enable git hook after installing packages by `yarn`:
+    ```
+    "script": {
+        "prepare": "husky install"
+    },
+    ```
+</div>
+
 
 ### Feature branches
 - Branch off from: **develop**
 - Merge back into: **develop**
 - Branch naming convention: **feature/****
 
-Feature branches are used to develop new features for the upcoming releases. Each feature will be a separate branch, created from the latest source code of **develop**, example: **feature/project**, **feature/member**,... After completing the features, features branch will be merged into **develop** and deleted.  
+Feature branches are used to develop new features for the upcoming releases. Each feature will be a separate branch, created from the latest source code of **develop**, example: **feature/project**, **feature/member**,... After completing the features, features branch will be merged into **develop** and deleted.
+
 Follow these steps:
 <div class="annotate" markdown>
 
@@ -81,3 +136,13 @@ git pull origin develop
 ```
 
 **<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
+
+### Release Please Action
+
+
+Follow these steps:
+<div class="annotate" markdown>
+
+
+
+</div>
