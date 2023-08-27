@@ -93,6 +93,12 @@ Follow these steps:
     ```
 5. Test the hook:
     ![test-hook](../assets/test-hook.png)
+6. Add script in `package.json` to automatically enable git hook after installing packages by `yarn`:
+    ```
+    "script": {
+        "prepare": "husky install"
+    },
+    ```
 </div>
 
 
