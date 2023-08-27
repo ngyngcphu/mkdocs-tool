@@ -89,7 +89,7 @@ Follow these steps:
     ```
 4. Add hook:
     ```
-    yarn husky add .husky/commit-msg  'yarn --no -- commitlint --edit ${1}'
+    yarn husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
     ```
 5. Test the hook:
     ![test-hook](../assets/test-hook.png)
