@@ -1,8 +1,10 @@
-name: ci 
+name: gen-docs
 on:
   pull_request:
     branches:
       - develop
+    paths-ignore:
+      - '*.md'
 permissions:
   contents: write
 jobs:
