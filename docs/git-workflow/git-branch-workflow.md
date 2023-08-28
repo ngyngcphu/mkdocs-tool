@@ -1,4 +1,4 @@
-# Git-branch Workflow
+# Git-branch workflow
 
 ## Introduction
 This training is based on the git-branch workflow that the TickFlow team worked on and other references on the internet.
