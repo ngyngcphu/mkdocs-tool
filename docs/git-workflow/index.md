@@ -1,7 +1,7 @@
-# Git Workflow
+# Git-Branch Workflow
 
 ## Introduction
-This training is based on the git-workflow that the TickFlow team worked on and other references on the internet.
+This training is based on the git-branch workflow that the TickFlow team worked on and other references on the internet.
 
 ## The main branches
 A repository must have at least these two main branches:
