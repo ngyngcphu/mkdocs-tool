@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.0.0...v1.1.0) (2023-08-28)
+
+
+### Features
+
+* **git-branch-workflow:** write hotfix, bugfix, test branch description ([89f3e04](https://github.com/ngyngcphu/mkdocs-tool/commit/89f3e0473a81b04f04c2905b075f1991e266a4ef))
+* **release:** add notes in branches ([63bf68d](https://github.com/ngyngcphu/mkdocs-tool/commit/63bf68d6d9ecb299905c208efc5245f7d15437b0))
+
+
+### Bug Fixes
+
+* **branch-name:** rename develop branch to staging branch ([1926776](https://github.com/ngyngcphu/mkdocs-tool/commit/192677617cb674a46a76000c5d8368c482c08fd2))
+* **mkdocs-configuration:** indent 1 space in nav at mkdocs.yml ([909994b](https://github.com/ngyngcphu/mkdocs-tool/commit/909994bb93d33d955ce51a6e806582a9fe7d2040))
+
 ## 1.0.0 (2023-08-27)
 
 
