@@ -138,7 +138,25 @@ git pull origin staging
 ```
 
 **<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
+### Hotfix and bugfix branch
+#### Hotfix
+- Branch off from: **main**
+- Merge back into: **main, develop**
+- Branch naming convention: **hotfix/****
 
+#### Bugfix
+- Branch off from: **develop**
+- Merge back into: **develop**
+- Branch naming convention: **bugfix/**
+  
+Hotfix and bugfix branches are utilized to address issues that arise in a system. When a problem occurs, we gather information about how it happened (reproduction case) and promptly take corrective action to restore the system's functionality. This quick fix is applied in the hotfix branch. Following this, we investigate the underlying cause of the problem and take more comprehensive measures to prevent similar issues from occurring in the future. These longer-term solutions are implemented in the bugfix branch.
+
+### Test branch
+- Branch off from: any branch
+- Merge back into: none
+- Branch naming convention: **test/**
+  
+If you come up with an idea, like a new method for coding or want to add a new tool to the project, you can try it out in a test branch. This lets you test the idea with safety and separation, reducing the potential impact on the main project.
 ### Release
 
 #### Github Action Workflows
