@@ -32,7 +32,11 @@ theme:
 
 nav:
   - Home: index.md
-  - Git workflow: git-workflow/index.md
+  - Git workflow: 
+    - git-workflow/index.md
+    - Git-branch workflow: git-workflow/git-branch-workflow.md
+    - Github Project: git-workflow/github-project.md
+    - Resolve conflict: git-workflow/resolve-conflict.md
 
 markdown_extensions:
   - abbr
