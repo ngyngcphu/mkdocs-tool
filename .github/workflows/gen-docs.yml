@@ -2,7 +2,7 @@ name: gen-docs
 on:
   pull_request:
     branches:
-      - develop
+      - staging
     paths-ignore:
       - '*.md'
 permissions:
