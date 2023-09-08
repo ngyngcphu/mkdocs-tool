@@ -134,7 +134,7 @@ Follow these steps:
 
 <figure markdown>
 
-  ![feature-branch](../assets/feature-branch.png){ width="300" }
+  ![feature-branch](../assets/feature-branch.png){ width="500" }
   <figcaption>Feature branches</figcaption>
 </figure>
 
@@ -149,13 +149,7 @@ git branch -D feature/part_1
 git pull origin staging
 ```
 
-**<u>Note</u>**: 
-<div class="annotate" markdown>
-
-1. A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
-2. If there is a pull request that has been merged into `staging`, team members should pull latest code from `staging` to avoid unnecessary conflicts.
-
-</div>
+**<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
 
 ### Hotfix and bugfix branches
 
@@ -163,6 +157,12 @@ git pull origin staging
 - Branch off from: **main**
 - Merge back into: **main** and **staging**
 - Branch naming convention: **hotfix/****
+
+<figure markdown>
+
+  ![hotfix-branch](../assets/hotfix-branch.png){ width="500" }
+  <figcaption>Hotfix branch</figcaption>
+</figure>
 
 #### Bugfix
 - Branch off from: **staging**
