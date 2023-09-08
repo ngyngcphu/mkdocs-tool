@@ -38,6 +38,12 @@ Follow these steps:
 
 </div>
 
+<figure markdown>
+
+  ![main-staging](../assets/main-staging.png){ width="300" }
+  <figcaption>Branch main and branch staging</figcaption>
+</figure>
+
 ## The supporting branches
 Besides the main branches, there will be support branches so that team members can work in parallel, easily track features, prepare for release or quickly fix production and staging issues. These support branches will be **deleted** after using, including:
 <div class="annotate" markdown>
@@ -126,6 +132,12 @@ Follow these steps:
 
 </div>
 
+<figure markdown>
+
+  ![feature-branch](../assets/feature-branch.png){ width="500" }
+  <figcaption>Feature branches</figcaption>
+</figure>
+
 After completing all the code in **feature/part_1**, make a **Pull requests** to **staging**. Then, add reviewers.
 
 **<u>Note</u>**: All conversations on code must be resolved before a pull request can be merged into a branch.
@@ -137,13 +149,7 @@ git branch -D feature/part_1
 git pull origin staging
 ```
 
-**<u>Note</u>**: 
-<div class="annotate" markdown>
-
-1. A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
-2. If there is a pull request that has been merged into `staging`, team members should pull latest code from `staging` to avoid unnecessary conflicts.
-
-</div>
+**<u>Note</u>**: A pull request must not exceed **20 files changed**. If the feature is too big (> 20 files changed), it should be split into sub-branches, like that: **sub-feature-part_1/search-project**,...Then, make a pull request from **sub-feature-part_1/search-project** to **feature/part_1**, same as above.
 
 ### Hotfix and bugfix branches
 
@@ -152,10 +158,34 @@ git pull origin staging
 - Merge back into: **main** and **staging**
 - Branch naming convention: **hotfix/****
 
+<figure markdown>
+
+  ![hotfix-branch](../assets/hotfix-branch.png){ width="600" }
+  <figcaption>Hotfix branch</figcaption>
+</figure>
+
+<figure markdown>
+
+  ![hotfix-merge](../assets/hotfix-merge.png){ width="600" }
+  <figcaption>Branches structure after merging hotfix</figcaption>
+</figure>
+
 #### Bugfix
 - Branch off from: **staging**
 - Merge back into: **staging**
 - Branch naming convention: **bugfix/****
+
+<figure markdown>
+
+  ![bugfix-branch](../assets/bugfix-branch.png){ width="600" }
+  <figcaption>Bugfix branch</figcaption>
+</figure>
+
+<figure markdown>
+
+  ![bugfix-merge](../assets/bugfix-merge.png){ width="600" }
+  <figcaption>Branches structure after merging bugfix</figcaption>
+</figure>
   
 Hotfix and bugfix branches are utilized to address issues that arise in a system. When a problem occurs, we gather information about how it happened (reproduction case) and promptly take corrective action to restore the system's functionality. This quick fix is applied in the hotfix branch. Following this, we investigate the underlying cause of the problem and take more comprehensive measures to prevent similar issues from occurring in the future. These longer-term solutions are implemented in the bugfix branch.
 
