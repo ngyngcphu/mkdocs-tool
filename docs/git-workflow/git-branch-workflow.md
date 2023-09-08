@@ -38,6 +38,12 @@ Follow these steps:
 
 </div>
 
+<figure markdown>
+
+  ![main-staging](../assets/main-staging.png){ width="300" }
+  <figcaption>Branch main and branch staging</figcaption>
+</figure>
+
 ## The supporting branches
 Besides the main branches, there will be support branches so that team members can work in parallel, easily track features, prepare for release or quickly fix production and staging issues. These support branches will be **deleted** after using, including:
 <div class="annotate" markdown>
