@@ -132,6 +132,12 @@ Follow these steps:
 
 </div>
 
+<figure markdown>
+
+  ![feature-branch](../assets/feature-branch.png){ width="300" }
+  <figcaption>Feature branches</figcaption>
+</figure>
+
 After completing all the code in **feature/part_1**, make a **Pull requests** to **staging**. Then, add reviewers.
 
 **<u>Note</u>**: All conversations on code must be resolved before a pull request can be merged into a branch.
