@@ -174,6 +174,18 @@ git pull origin staging
 - Branch off from: **staging**
 - Merge back into: **staging**
 - Branch naming convention: **bugfix/****
+
+<figure markdown>
+
+  ![bugfix-branch](../assets/bugfix-branch.png){ width="600" }
+  <figcaption>Bugfix branch</figcaption>
+</figure>
+
+<figure markdown>
+
+  ![bugfix-merge](../assets/bugfix-merge.png){ width="600" }
+  <figcaption>Branches structure after merging bugfix</figcaption>
+</figure>
   
 Hotfix and bugfix branches are utilized to address issues that arise in a system. When a problem occurs, we gather information about how it happened (reproduction case) and promptly take corrective action to restore the system's functionality. This quick fix is applied in the hotfix branch. Following this, we investigate the underlying cause of the problem and take more comprehensive measures to prevent similar issues from occurring in the future. These longer-term solutions are implemented in the bugfix branch.
 
