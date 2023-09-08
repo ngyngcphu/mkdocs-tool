@@ -160,8 +160,14 @@ git pull origin staging
 
 <figure markdown>
 
-  ![hotfix-branch](../assets/hotfix-branch.png){ width="500" }
+  ![hotfix-branch](../assets/hotfix-branch.png){ width="600" }
   <figcaption>Hotfix branch</figcaption>
+</figure>
+
+<figure markdown>
+
+  ![hotfix-merge](../assets/hotfix-merge.png){ width="600" }
+  <figcaption>Branches structure after merging hotfix</figcaption>
 </figure>
 
 #### Bugfix
