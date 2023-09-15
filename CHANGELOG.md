@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.2.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.1.0...v1.2.0) (2023-09-08)
+
+
+### Features
+
+* **image:** add bugfix-branch and bugfix-merge images ([82cb727](https://github.com/ngyngcphu/mkdocs-tool/commit/82cb72715c332b5abe95d26d7d61db14f36acf51))
+* **image:** add feature branch images ([6e04a11](https://github.com/ngyngcphu/mkdocs-tool/commit/6e04a11e06bbf5429967d22848d2766d5a7aa475))
+* **image:** add hotfix branch image ([7517119](https://github.com/ngyngcphu/mkdocs-tool/commit/75171195df9208059476fee4d67fb664c5726b0c))
+* **image:** add hotfix-branch and hotfix-merge ([bc2e8b2](https://github.com/ngyngcphu/mkdocs-tool/commit/bc2e8b2014bbeb8a6c59c38e55f790bac01e30ff))
+* **image:** add main-staging branches image ([cb0e336](https://github.com/ngyngcphu/mkdocs-tool/commit/cb0e336feefda64d9f5f73e752499595f3f000ca))
+
+## [1.1.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.0.0...v1.1.0) (2023-08-28)
+
+
+### Features
+
+* **git-branch-workflow:** write hotfix, bugfix, test branch description ([89f3e04](https://github.com/ngyngcphu/mkdocs-tool/commit/89f3e0473a81b04f04c2905b075f1991e266a4ef))
+* **release:** add notes in branches ([63bf68d](https://github.com/ngyngcphu/mkdocs-tool/commit/63bf68d6d9ecb299905c208efc5245f7d15437b0))
+
+
+### Bug Fixes
+
+* **branch-name:** rename develop branch to staging branch ([1926776](https://github.com/ngyngcphu/mkdocs-tool/commit/192677617cb674a46a76000c5d8368c482c08fd2))
+* **mkdocs-configuration:** indent 1 space in nav at mkdocs.yml ([909994b](https://github.com/ngyngcphu/mkdocs-tool/commit/909994bb93d33d955ce51a6e806582a9fe7d2040))
+
 ## 1.0.0 (2023-08-27)
 
 
