@@ -36,7 +36,8 @@ nav:
     - git-workflow/index.md
     - Git-branch workflow: git-workflow/git-branch-workflow.md
     - Github Project: git-workflow/github-project.md
-    - Resolve conflict: git-workflow/resolve-conflict.md
+    #- Resolve conflict: git-workflow/resolve-conflict.md
+    - Sample Project: git-workflow/sample-project.md
 
 markdown_extensions:
   - abbr
