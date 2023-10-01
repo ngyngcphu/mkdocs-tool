@@ -15,7 +15,9 @@ GitHub is a platform for software developers to collaborate and manage not just 
 ### Getting familiar with issues
 1. A task **before converting into issues** is just a draft task that doesn’t belong to any repository. 
 ![A draft task before converting into issue](../assets/draft_task.png)
-2. **After converting them into issues**, we would be able to assign tasks to team members and relate them to pull requests and that issue will reside inside a repository. 
+
+2. **After converting them into issues**, we would be able to assign tasks to team members and relate them to pull requests and that issue will reside inside a repository.
+
 ![Converting a draft task into issue](../assets/convert_to_issue.png)
 3. Each issue has an ID. If you mention an issue in the description section of another issue, it then can be understood as a subtask.
 ![An official issue after converting](../assets/official_task.png)
@@ -24,16 +26,21 @@ GitHub is a platform for software developers to collaborate and manage not just 
 
 ### Add detailed information to your tasks
 GitHub provides various data types to add more information to your task:
+
 - A date field to track target ship dates.
 - A number field to track the complexity of a task.
 - A single select field to track whether a task is a Low, Medium, or High priority.
 - A text field to add a quick note.
 - An iteration field to plan work week-by-week, including support for breaks.
+
 ![General metadata](../assets/metadata_1.png)
+
 **After converting into issues**, you can also add repository information into your task:
+
 - A member of your team to handle the task
 - A milestone of your project
 - A pull request
+
 ![Additional metadata after converting into issue](../assets/metadata_2.png)
 
 
