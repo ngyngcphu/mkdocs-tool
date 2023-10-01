@@ -19,9 +19,13 @@ GitHub is a platform for software developers to collaborate and manage not just 
 2. **After converting them into issues**, we would be able to assign tasks to team members and relate them to pull requests and that issue will reside inside a repository.
 
 ![Converting a draft task into issue](../assets/convert_to_issue.png)
+
 3. Each issue has an ID. If you mention an issue in the description section of another issue, it then can be understood as a subtask.
+
 ![An official issue after converting](../assets/official_task.png)
+
 4. Use the checklist symbol before mentioning an issue ID so that it can display similar to the above.
+
 ![Two subtasks inside an issue, while editing](../assets/subtasks.png)
 
 ### Add detailed information to your tasks
