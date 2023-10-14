@@ -1,6 +1,3 @@
-{#-
-This file was automatically generated - do not edit
--#}
 {% extends "main.html" %}
 {% block tabs %}
 {{ super() }}
@@ -8,20 +5,25 @@ This file was automatically generated - do not edit
   .md-container {
     background: linear-gradient(to bottom, var(--md-primary-fg-color), #363949 99%, var(--md-default-bg-color) 99%);
   }
+
   .md-header {
     position: initial
   }
+
   .md-main__inner {
     margin: 0;
   }
+
   .md-content {
     display: none;
   }
+
   @media screen and (min-width:60em) {
     .md-sidebar--secondary {
       display: none
     }
   }
+
   @media screen and (min-width:76.25em) {
     .md-sidebar--primary {
       display: none
@@ -37,6 +39,12 @@ This file was automatically generated - do not edit
       <div class="mdx-hero__content">
         <h1>Knowledge sharing articles</h1>
         <p>{{ config.site_description }}</p>
+        <h4>
+          Our information at website
+          <a rel="me" href="https://ticklab.vn">
+            <strong style="text-decoration: underline;">ticklab.vn</strong>
+          </a>
+        </h4>
       </div>
     </div>
   </div>

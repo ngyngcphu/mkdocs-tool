@@ -344,7 +344,7 @@
     .mdx-hero__image {
         order: 1;
         transform: translateX(1rem);
-        width: 40rem;
+        width: 38rem;
     }
 }
 
@@ -661,4 +661,31 @@ html .md-footer-meta.md-typeset a:hover {
     margin: auto .6rem;
     padding: .4rem 0;
     width: 100%
+}
+
+@media screen and (min-width:45em) {
+    .md-copyright {
+        width: auto
+    }
+}
+
+.md-copyright__highlight {
+    color: var(--md-footer-fg-color--light)
+}
+
+.md-social__link {
+    display: inline-block;
+    height: 1.6rem;
+    text-align: center;
+    width: 1.6rem
+}
+
+.md-social__link:before {
+    line-height: 1.9
+}
+
+.md-social__link svg {
+    fill: currentcolor;
+    max-height: .8rem;
+    vertical-align: -25%
 }

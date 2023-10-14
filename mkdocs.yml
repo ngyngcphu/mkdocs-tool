@@ -18,6 +18,7 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.footer
     - toc.follow
   favicon: assets/TickLab-logo.svg
   logo: assets/TickLab-logo.svg
@@ -43,6 +44,16 @@ nav:
     - Github Project: git-workflow/github-project.md
     #- Resolve conflict: git-workflow/resolve-conflict.md
     - Sample Project: git-workflow/sample-project.md
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TickLabVN
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/ticklab.vn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@TickLab
 
 extra_css:
   - stylesheets/extra.css
