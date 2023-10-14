@@ -37,13 +37,9 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home: index.md
-  - Git workflow: 
-    - git-workflow/index.md
-    - Git-branch workflow: git-workflow/git-branch-workflow.md
-    - Github Project: git-workflow/github-project.md
-    #- Resolve conflict: git-workflow/resolve-conflict.md
-    - Sample Project: git-workflow/sample-project.md
+  - Trang chủ: index.md
+  - Bài viết:
+      - blog/index.md
 
 extra:
   generator: false
@@ -57,6 +53,19 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+
+plugins:
+  - blog:
+      categories_allowed:
+        - Software
+        - Research
+  - rss:
+      match_path: blog/posts/.*
+      date_from_meta:
+        as_creation: date
+      categories:
+        - categories
+        - tags
 
 markdown_extensions:
   - abbr
