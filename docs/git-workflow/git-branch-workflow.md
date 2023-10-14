@@ -1,4 +1,6 @@
+---
 comments: true
+---
 
 # Git-branch workflow
 

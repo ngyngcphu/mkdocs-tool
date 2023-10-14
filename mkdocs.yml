@@ -44,6 +44,9 @@ nav:
     #- Resolve conflict: git-workflow/resolve-conflict.md
     - Sample Project: git-workflow/sample-project.md
 
+extra_css:
+  - stylesheets/extra.css
+
 markdown_extensions:
   - abbr
   - attr_list
