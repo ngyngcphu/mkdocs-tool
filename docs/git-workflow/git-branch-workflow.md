@@ -1,3 +1,5 @@
+comments: true
+
 # Git-branch workflow
 
 ## Introduction
