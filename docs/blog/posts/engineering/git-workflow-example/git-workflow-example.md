@@ -7,15 +7,13 @@ categories:
 comments: true
 ---
 
-# Sample project
-
-## Setup project
-
-First, make sure you already have Git installed on your computer and a GitHub account
+# Git workflow in practice
+This is the sample project for this article [Git workflow](../git-workflow/git-workflow.md).
 
 <!-- more -->
 
-To check git is installed:
+## Setup project
+First, make sure you already have Git installed on your computer and a GitHub account. To check git is installed:
 
 ```bash
 git --version
@@ -39,7 +37,7 @@ You need to create a repository in GitHub, let's give it a git-workflow-example 
 
 ![Untitled](./images/Untitled.png)
 
-Tick at the “Add a README file” option. Let all remaining setting is default then click the ‘Create repository’ button.
+Tick at the **“Add a README file”** option. Let all remaining setting is default then click the **"Create repository"** button.
 
 ![Untitled](./images/Untitled%201.png)
 
@@ -47,18 +45,17 @@ Save the link to the repository, you will need it later, with this tutorial, we 
 
 In the upper left, click on the branch button.
 
-Click on the View All branch.
+Click on the **View all branches**.
 
-Click new branch, naming branch is staging, source is main.
+Click **New branch**, naming branch is **staging**, source is **main**.
 
-Go to setting → Branches → Add rule.
+Go to **Settings → Branches → Add rule**.
 
 Create two sets of rules for main and staging, with the following rule chosen:
 
 - Require a pull request before merging.
 - Require status checks to pass before merging.
     - Require branches to be up to date before merging.
-
 ![Untitled](./images/Untitled%202.png)
 
 These rules make sure our project follows the git workflow.
@@ -110,7 +107,7 @@ git push origin -u feature/adding-hello-world-line
 
 This may ask you for credentials if this is the first time you are using Git, you can follow [this](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to create a GitHub personal access token to identify.
 
-Notice: GitHub removed Support for password authentication on August 13, 2021.
+**<u>Notice</u>**: GitHub removed **Support for password authentication** on August 13, 2021.
 
 Before identifying, you can run this to avoid entering credentials multiple times:
 
@@ -140,7 +137,7 @@ git pull
 git checkout -b feature/add-release-action
 ```
 
-The branch *feature/adding-hello-world-line has been merged to staging, so you can delete it:*
+The branch ***feature/adding-hello-world-line*** has been merged to staging, so you can delete it:
 
 ```bash
 git branch -d feature/adding-hello-world-line
@@ -153,7 +150,7 @@ mkdir .github && cd $_
 mkdir workflows && cd $_
 ```
 
-In the workflows folder, create a file name release.yml and give the file permission to edit content:
+In the workflows folder, create a file name **release.yml** and give the file permission to edit content:
 
 ```bash
 touch release.yml
@@ -162,7 +159,7 @@ chmod +w release.yml
 
 You can use any editor you want, this tutorial will use vim to change file content.
 
-Open file with vim:
+Open file with Vim:
 
 ```bash
 vim release.yml
@@ -201,7 +198,7 @@ jobs:
           pull-request-header: 'Bot (:robot:) requested to create a new release on ${{ github.ref_name }}'
 ```
 
-Entering ****:wq**** to save and close the file.
+Entering **:wq** to save and close the file.
 
 Commit the change and push the new feature branch to the remote repo:
 
@@ -219,7 +216,7 @@ To GitHub action can release a new version in your repository, you need to allow
 
 Go to the settings of your repository. 
 
-Go to Action > General, and tick “Allow GitHub Actions can create pull requests or submit approving pull request reviews” at the end of the page. Save the setting.
+Go to **Action > General**, and tick **“Allow GitHub Actions can create pull requests or submit approving pull request reviews”** at the end of the page. Save the setting.
 
 ![Untitled](./images/Untitled%206.png)
 
@@ -259,7 +256,7 @@ Oop! The rendered result is different from what we expected.
 
 In this section, we will fix this bug using git-workflow. Because we don’t have permission to directly modify this repository, we will fork this repository to change, push, and create pull requests.
 
-Click the “Fork” button in the upper right, and give it a new name *********git-workflow-sample********* to distinguish the one you created above. Let all remaining setting is the default.
+Click the **“Fork”** button in the upper right, and give it a new name ***git-workflow-sample*** to distinguish the one you created above. Let all remaining setting is the default.
 
 Clone the new repository we have just forked to make some changes in that code:
 
@@ -316,7 +313,7 @@ Push our change to the remote repository and create a new pull request:
 git push -u origin hotfix/back-to-before-newline-script-is-added
 ```
 
-This will create a hotfix/back-to-before-newline-script-is-added branch in your remote repository and push your code to this branch.
+This will create a **hotfix/back-to-before-newline-script-is-added** branch in your remote repository and push your code to this branch.
 
 Create pull requests to the main and staging branches. Our user can continue using our service after your pull request is approved and merged.
 
@@ -418,4 +415,4 @@ Create a pull request to merge your change to the staging branch
 
 ![Untitled](./images/Untitled%2018.png)
 
-Good job! You have just completely debugged a problem with the git workflow
+Good job! You have just completely debugged a problem with the git workflow.

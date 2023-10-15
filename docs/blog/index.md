@@ -1,2 +1,2 @@
-# Bài viết
+# Danh sách bài viết
 

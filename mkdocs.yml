@@ -20,6 +20,8 @@ theme:
     - navigation.top
     - navigation.footer
     - toc.follow
+    - content.code.copy
+    - content.code.annotate
   favicon: assets/TickLab-logo.svg
   logo: assets/TickLab-logo.svg
   palette:
@@ -60,6 +62,7 @@ plugins:
         - Engineering
         - Research
       pagination_per_page: 5
+      post_url_format: "{slug}"
   - git-revision-date-localized:
       enable_creation_date: true
   - search
@@ -67,11 +70,13 @@ plugins:
 markdown_extensions:
   - abbr
   - attr_list
+  - def_list
   - footnotes
   - md_in_html
   - tables
   - toc:
       permalink: true
+      toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
@@ -87,6 +92,8 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
