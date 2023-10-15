@@ -57,10 +57,12 @@ extra_css:
 plugins:
   - blog:
       categories_allowed:
-        - Software
+        - Engineering
         - Research
+      pagination_per_page: 5
   - git-revision-date-localized:
       enable_creation_date: true
+  - search
 
 markdown_extensions:
   - abbr

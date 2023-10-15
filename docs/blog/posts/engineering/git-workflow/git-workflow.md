@@ -5,7 +5,7 @@ authors:
     - quannhg
     - amyranotamirror
 categories:
-  - Software
+  - Engineering
 comments: true
 ---
 
@@ -52,7 +52,7 @@ Follow these steps:
 
 <figure markdown>
 
-  ![main-staging](../../assets/main-staging.png){ width="300" }
+  ![main-staging](./images/main-staging.png){ width="300" }
   <figcaption>Branch main and branch staging</figcaption>
 </figure>
 
@@ -112,7 +112,7 @@ Follow these steps:
     yarn husky add .husky/commit-msg  'npx --no -- commitlint --edit ${1}'
     ```
 5. Test the hook:
-    ![test-hook](../../assets/test-hook.png)
+    ![test-hook](./images/test-hook.png)
 6. Add script in `package.json` to automatically enable git hook after installing packages by `yarn`:
     ```
     "script": {
@@ -146,7 +146,7 @@ Follow these steps:
 
 <figure markdown>
 
-  ![feature-branch](../../assets/feature-branch.png){ width="500" }
+  ![feature-branch](./images/feature-branch.png){ width="500" }
   <figcaption>Feature branches</figcaption>
 </figure>
 
@@ -172,13 +172,13 @@ git pull origin staging
 
 <figure markdown>
 
-  ![hotfix-branch](../../assets/hotfix-branch.png){ width="600" }
+  ![hotfix-branch](./images/hotfix-branch.png){ width="600" }
   <figcaption>Hotfix branch</figcaption>
 </figure>
 
 <figure markdown>
 
-  ![hotfix-merge](../../assets/hotfix-merge.png){ width="600" }
+  ![hotfix-merge](./images/hotfix-merge.png){ width="600" }
   <figcaption>Branches structure after merging hotfix</figcaption>
 </figure>
 
@@ -189,13 +189,13 @@ git pull origin staging
 
 <figure markdown>
 
-  ![bugfix-branch](../../assets/bugfix-branch.png){ width="600" }
+  ![bugfix-branch](./images/bugfix-branch.png){ width="600" }
   <figcaption>Bugfix branch</figcaption>
 </figure>
 
 <figure markdown>
 
-  ![bugfix-merge](../../assets/bugfix-merge.png){ width="600" }
+  ![bugfix-merge](./images/bugfix-merge.png){ width="600" }
   <figcaption>Branches structure after merging bugfix</figcaption>
 </figure>
   
@@ -240,29 +240,29 @@ Also, let's create a `build` job to build a package on github container registry
 GitHub is a platform for software developers to collaborate and manage not just their code but the overall project planning and task-tracking process through a feature called “GitHub Project”. A project provides various views: spreadsheet, task board, or roadmap integrated with your issues and pull requests, which help your management process always stay up-to-date with the developing process.
 ## Setting up projects
 1. We can navigate to the **“Projects”** tab from the header.
-![Project Tab accessing via organization](../../assets/project_in_org.png)
-![Project Tab accessing via personal profile](../../assets/project_in_profile.png)
+![Project Tab accessing via organization](./images/project_in_org.png)
+![Project Tab accessing via personal profile](./images/project_in_profile.png)
 2. Create your first project by clicking on the **“New project”** button.
 3. You can either “Start from scratch” or use the provided “Project template” (highly recommended) to get a grasp of this feature.
-![Template for creating projects](../../assets/view_options.png)
+![Template for creating projects](./images/view_options.png)
 4. Play around with different types of views that your team would be more comfortable with.
 
 ## Creating and managing tasklist
 ### Getting familiar with issues
 1. A task **before converting into issues** is just a draft task that doesn’t belong to any repository. 
-![A draft task before converting into issue](../../assets/draft_task.png)
+![A draft task before converting into issue](./images/draft_task.png)
 
 2. **After converting them into issues**, we would be able to assign tasks to team members and relate them to pull requests and that issue will reside inside a repository.
 
-![Converting a draft task into issue](../../assets/convert_to_issue.png)
+![Converting a draft task into issue](./images/convert_to_issue.png)
 
 3. Each issue has an ID. If you mention an issue in the description section of another issue, it then can be understood as a subtask.
 
-![An official issue after converting](../../assets/official_task.png)
+![An official issue after converting](./images/official_task.png)
 
 4. Use the checklist symbol before mentioning an issue ID so that it can display similar to the above.
 
-![Two subtasks inside an issue, while editing](../../assets/subtasks.png)
+![Two subtasks inside an issue, while editing](./images/subtasks.png)
 
 ### Add detailed information to your tasks
 GitHub provides various data types to add more information to your task:
@@ -273,7 +273,7 @@ GitHub provides various data types to add more information to your task:
 - A text field to add a quick note.
 - An iteration field to plan work week-by-week, including support for breaks.
 
-![General metadata](../../assets/metadata_1.png)
+![General metadata](./images/metadata_1.png)
 
 **After converting into issues**, you can also add repository information into your task:
 
@@ -281,7 +281,7 @@ GitHub provides various data types to add more information to your task:
 - A milestone of your project
 - A pull request
 
-![Additional metadata after converting into issue](../../assets/metadata_2.png)
+![Additional metadata after converting into issue](./images/metadata_2.png)
 
 
 **Manage issue via GLI:**
