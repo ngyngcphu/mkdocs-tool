@@ -7,56 +7,29 @@ categories:
 comments: true
 ---
 
-![](images/2023/knowledge_sharing/edge_detection-intro.png)
-===========================================================
-<!-- more -->
+# Edge detection
 
-Mục lục
--------
+Trong giai đoạn đầu của quá trình xử lý ảnh, chúng ta mong muốn đúc kết ra những thông tin về cấu trúc cũng như tính chất của các vật thể trong ảnh. Để làm được điều này, việc tìm ra những đặc trưng cơ bản (feature) của các vật thể này là cần thiết. Cạnh (edge) là một trong những đặc trưng này. Chúng ta cùng quan sát hai bức ảnh sau:
 
-1.  [Một vài khái niệm](#mot_vai_khai_niem)  
-    1.  [Ảnh trắng đen (grayscale image)](#anh_trang_den)
-    2.  [Cách đánh chỉ số các pixel](#cach_danh_chi_so_cac_pixel)
-    3.  [Phép tích chập (convolution)](#phep_tich_chap)
-    4.  [Cạnh và các nguyên nhân tạo thành cạnh](#canh_va_cac_nguyen_nhan_tao_thanh_canh)
-    5.  [Các khái niệm khác](#cac_khai_niem_khac)
-2.  [Phương pháp đạo hàm cấp một cho bài toán nhận diện cạnh](#phuong_phap_dao_ham_cap_mot_cho_bai_toan_nhan_dien_canh)  
-    1.  [Xấp xỉ đạo hàm](#xap_xi_dao_ham)
-    2.  [Một số toán tử phổ biến sử dụng đạo hàm cấp một](#mot_so_toan_tu_pho_bien_su_dung_dao_dam_cap_mot)
-    3.  [Ảnh hưởng của độ lớn kernel đến khả năng nhận diện cạnh](#anh_huong_cua_do_lon_kernel_den_kha_nang_nhan_dien_canh)
-3.  [Các bước của một thuật toán nhận diện cạnh](#cac_buoc_cua_mot_thuat_toan_nhan_dien_canh)
-4.  [Phương pháp đạo hàm cấp hai cho bài toán nhận diện cạnh](#phuong_phap_dao_ham_cap_hai_cho_bai_toan_nhan_dien_canh)  
-    1.  [Toán tử Laplacian](#toan_tu_laplacian)
-    2.  [Đạo hàm cấp hai có hướng](#dao_ham_cap_hai_co_huong)
-5.  [Phương pháp tìm cạnh trên ảnh nhiễu](#phuong_phap_tim_canh_tren_anh_nhieu)  
-    1.  [Ảnh hưởng của nhiễu đến đạo hàm](#anh_huong_cua_nhieu_den_dao_ham)
-    2.  [Đạo hàm của Gaussian (Derivative of Gaussian)](#laplacian_cua_gaussian)
-    3.  [Laplacian của Gaussian (Laplacian of Gaussian - LoG)](#laplacian_cua_gaussian)
-6.  [Canny Edge Detector](#canny_edge_detector)  
-    1.  [Non-maxima suppression](#non-maxima_suppression)
-    2.  [Hysteresis thresholding](#hysteresis_thresholding)
-    3.  [Thuật toán Canny Edge Detection](#thuat_toan_canny_edge_detection)
-7.  [Kết luận](#h27sll1tvlqs1iujizb1bhecq210amjfc)
-8.  [Tham khảo](#h54sll1tvye91ug6bgk1ful5pf83qr2p)
+<figure markdown>
 
-0\. Dẫn nhập
-------------
-
-Trong giai đoạn đầu của quá trình xử lý ảnh, chúng ta mong muốn đúc kết ra những thông tin về cấu trúc cũng như tính chất của các vật thể trong ảnh. Để làm được điều này, việc tìm ra những đặc trưng cơ bản (feature) của các vật thể này là cần thiết. Cạnh (edge) là một trong những đặc trưng này. Chúng ta cùng quan sát hai bức ảnh sau:  
-![](images/2023/knowledge_sharing/Henry_Moore_The_Archer_sketch.png)
-
-_Hình 1: Bên trái: Ảnh chụp bức tượng The Archer của Henry Moore (1964). Bên phải: Bản phác thảo của bức tượng này. Ảnh tham khảo từ [\[4\]](#h54sll1tvye91ug6bgk1ful5pf83qr2p)._
+  ![Henry_Moore_The_Archer_sketch](./images/Henry_Moore_The_Archer_sketch.png){ width="500" }
+  <figcaption markdown>
+  Hình 1: Bên trái: Ảnh chụp bức tượng The Archer của Henry Moore (1964). Bên phải: Bản phác thảo của bức tượng này. Ảnh tham khảo từ [[4]](#ref_4).
+  </figcaption>
+</figure>
 
 Tuy đã giản lược rất nhiều chi tiết và chỉ lưu lại những đường nét nổi bật nhất, bức ảnh bên phải vẫn bảo toàn được một lượng thông tin đủ để giúp ta hình dung được một cách dễ dàng kết cấu và một vài đặc điểm nhất định của vật thể trong bức ảnh gốc. Do vậy, nhận diện cạnh thường là một trong những bước đầu tiên của quá trình khôi phục thông tin từ một bức ảnh. Cũng bởi vai trò quan trọng này nên bài toán nhận diện cạnh vẫn tiếp tục là một lĩnh vực được nghiên cứu được quan tâm rộng rãi. Trong bài viết này, chúng ta sẽ cùng nhau tìm hiểu những khái niệm cơ bản liên quan đến bài toán nhận diện cạnh, các vấn đề thường gặp trong bài toán này cũng như những thuật toán nhận diện cạnh thông dụng.
 
-1\. Một vài khái niệm
----------------------
+<!-- more -->
+
+## 1. Một vài khái niệm
 
 ### 1.1. Ảnh trắng đen (grayscale image)
 
 Bài viết này chỉ sử dụng ảnh grayscale làm minh họa cho bài toán nhận diện cạnh. Ảnh grayscale được sử dụng có giá trị pixel dao động trong khoảng từ 0 đến 255 với 0 là màu đen và 255 là màu trắng, các giá trị ở giữa là những sắc thái xám khác nhau được pha trộn theo một tỉ lệ nhất định hai màu đen và trắng này. Các giá trị của pixel được gọi là mức độ xám (gray level), giá trị này trong một số tài liệu cũng được gọi là cường độ ảnh (image intensity) hay cường độ (intensity).
 
-![](images/2023/knowledge_sharing/Grayscale_Color_Spectrum.png)
+![](./images/Grayscale_Color_Spectrum.png)
 
 _Hình 2: Dãy màu cho ảnh grayscale (để ý rằng giá trị của pixel càng thấp có màu ngả sang đen nhiều hơn và ngược lại). Ảnh tham khảo [tại đây](https://cs.calvin.edu/activities/connect/CompRenew/03programming/01programming.html)._
 
@@ -64,13 +37,13 @@ _Hình 2: Dãy màu cho ảnh grayscale (để ý rằng giá trị của pixel 
 
 Trong mặt phẳng ảnh, ta thường đặt gốc tọa độ ở trung tâm, tia Ox hướng từ trái sang phải và tia Oy hướng từ dưới lên trên. Tuy nhiên khi số hóa thì bức ảnh được biểu diễn bằng một mảng 2 chiều, trong đó mỗi phần tử lưu giá trị của pixel ở vị trí tương ứng. Lưu ý rằng để làm việc với một bức ảnh, ta cần chuyển bức ảnh này thành dạng số, lúc này bức ảnh không còn giữ được tính "liên tục" của nó nữa mà bị "lượng hóa" (quantized) thành các đơn vị nhỏ gọi là các pixel. Thông thường người ta đánh chỉ số các pixel như sau: mỗi pixel có chỉ số $\[i,j\]$, trong đó $i$ tăng dần từ trái sang phải, $j$ tăng dần từ trên xuống dưới, pixel trên cùng bên trái có chỉ số $\[0,0\]$.
 
-![](images/2023/knowledge_sharing/Pixel_Indexing.png)
+![](./images/Pixel_Indexing.png)
 
 _Hình 3: Một điểm trên mặt phẳng ảnh và pixel tương ứng biểu diễn điểm ảnh ấy (lưu ý rằng nhiều điểm ảnh có thể được biểu diễn bởi một pixel duy nhất). Ảnh tham khảo từ [\[1\]](#h54sll1tvye91ug6bgk1ful5pf83qr2p)._
 
 ### 1.3. Phép tích chập (convolution)
 
-Phép tích chập có quan hệ mật thiết đến phép tương quan chéo (cross correlation). Trong phép tương quan chéo, ta có một hạt nhân (kernel) với một phần tử trung tâm (center) và một mảng đầu vào, lần lượt trượt kernel từ góc trên cùng bên trái của mảng đầu vào theo chiều từ trái sang phải, từ trên xuống dưới. Tại mỗi phần tử của mảng đầu vào mà trung tâm kernel này trượt đến, giá trị của phần tử này được tính bằng cách nhân giá trị mỗi phần tử trong kernel với giá trị phần tử tại vị trí tương ứng của mảng đầu vào, rồi lấy tổng các giá trị này \[3\]. Trong phép tích chập, ta cần xoay kernel 180 độ trước khi thực hiện quá trình trên. Bạn đọc có thể tìm hiểu kĩ hơn về khái niệm này qua bài viết [**Mạng nơ-ron tích chập - Convolutional Neural Network (CNN/ConvNet)**](newest-tutorial/cse/mtcntt-chiasekienthuc/m-ng-no-ron-tich-ch-p-convolutional-neural-network-cnn-convnet), phần 2.1 viết về Lớp tích chập (Convolutional layer).
+Phép tích chập có quan hệ mật thiết đến phép tương quan chéo (cross correlation). Trong phép tương quan chéo, ta có một hạt nhân (kernel) với một phần tử trung tâm (center) và một mảng đầu vào, lần lượt trượt kernel từ góc trên cùng bên trái của mảng đầu vào theo chiều từ trái sang phải, từ trên xuống dưới. Tại mỗi phần tử của mảng đầu vào mà trung tâm kernel này trượt đến, giá trị của phần tử này được tính bằng cách nhân giá trị mỗi phần tử trong kernel với giá trị phần tử tại vị trí tương ứng của mảng đầu vào, rồi lấy tổng các giá trị này \[3\]. Trong phép tích chập, ta cần xoay kernel 180 độ trước khi thực hiện quá trình trên. Bạn đọc có thể tìm hiểu kĩ hơn về khái niệm này qua bài viết [**Mạng nơ-ron tích chập - Convolutional Neural Network (CNN/ConvNet)**](https://ticklab.vn/newest-tutorial/cse/mtcntt-chiasekienthuc/m-ng-no-ron-tich-ch-p-convolutional-neural-network-cnn-convnet), phần 2.1 viết về Lớp tích chập (Convolutional layer).
 
 Ở những phần tiếp theo có sử dụng phép tích chập, ta mặc định rằng các kernel sử dụng đã được xoay 180 độ.
 
@@ -78,7 +51,7 @@ Phép tích chập có quan hệ mật thiết đến phép tương quan chéo (
 
 Cạnh được định nghĩa là sự thay đổi cường độ ảnh một cách đột ngột và đáng kể.
 
-![](images/2023/knowledge_sharing/Connecting_Rod_Edge_Checking_ver2.png)
+![](./images/Connecting_Rod_Edge_Checking_ver2.png)
 
 _Hình 4: Hình a: Ảnh của đầu một thanh truyền. Hình b: Đồ thị biểu diễn mức độ xám của mỗi pixel trong dãy pixel nằm trên đường màu đỏ. Ảnh tham khảo từ [\[1\].](#h54sll1tvye91ug6bgk1ful5pf83qr2p)_
 
@@ -95,7 +68,7 @@ Bốn nguyên nhân phổ biến tạo nên cạnh là:
 
 Hình dưới đây giúp bạn đọc hình dung rõ hơn về các nguyên nhân này:
 
-![](images/2023/knowledge_sharing/Causes_of_edge.png)
+![](./images/Causes_of_edge.png)
 
 _Hình 5: Các nguyên nhân tạo thành cạnh (các đường **màu xanh lam** là những cạnh tạo thành do sự không liên tục về định hướng bề mặt, các đường **màu vàng** là những cạnh tạo thành do sự không liên tục về độ phản xạ của bề mặt, các đường **màu xanh lục** là những cạnh tạo thành do sự không liên tục về ánh sáng, các đường **màu đỏ** là những cạnh tạo thành do sự không liên tục về độ sâu). Ảnh tham khảo [tại đây](https://arxiv.org/pdf/2108.00616v1.pdf)._
 
@@ -112,7 +85,7 @@ Ngoài những khái niệm trên thì có một vài khái niệm mà mình cho
 
 Ở trên chúng ta đã có định nghĩa về cạnh, là sự thay đổi đột ngột và đáng kể về mức độ xám của các pixel trong ảnh. Sự thay đổi ấy nhắc ta nhớ đến khái niệm gì trong toán học nhỉ? Đúng rồi, là đạo hàm! Chúng ta cùng nhau quan sát bức hình dưới đây:
 
-![](images/2023/knowledge_sharing/First_Derivative.png)
+![](./images/First_Derivative.png)
 
 _Hình 6: Hình 1: Dãy các pixel được xét. Hình 2: Đồ thị biểu diễn mức độ xám của mỗi pixel trong dãy. Hình 3: Đạo hàm cấp một của hàm số biểu diễn bởi đồ thị thứ nhất. Ảnh tham khảo [tại đây](http://www.cs.toronto.edu/~fidler/slides/2015/CSC420/lecture3.pdf)._
 
@@ -183,11 +156,11 @@ Việc áp dụng 2 kernel trên sẽ giúp ta xấp xỉ được đạo hàm t
     
     Kết quả áp dụng toán tử Sobel:
     
-    ![](images/2023/knowledge_sharing/Original_Grayscale.png)
+    ![](./images/Original_Grayscale.png)
     
     _Hình 7: Ảnh gốc đã được chuyển sang dạng grayscale._
     
-    ![](images/2023/knowledge_sharing/Sobel_Operator_result.png)
+    ![](./images/Sobel_Operator_result.png)
     
     _Hình 8: Hình 1, 2: Kết quả thu được sau khi áp dụng 2 kernel $s\_x$, $s\_y$ lên ảnh gốc. Hình 3: Kết quả thu được sau khi tính độ lớn gradient tại mỗi pixel trong ảnh. Hình 4: Kết quả thu được sau khi phân ngưỡng hình 3 với ngưỡng T = 100._
     
@@ -226,7 +199,7 @@ Sau bước 2, ta thu được một bức ảnh với giá trị mỗi pixel l�
 
 Ở phương pháp trên, ta tính độ lớn gradient tại mỗi pixel rồi dùng một ngưỡng để xác định một pixel có phải là một cạnh hay không, dẫn đến việc có quá nhiều pixel được nhận diện là cạnh. Để khắc phục hạn chế này, một cách tiếp cận khác là đối với nhiều điểm cạnh nằm kề nhau, ta chỉ nhận những pixel có độ lớn gradient đạt cực đại cục bộ (local maxima). Ta cũng biết rằng, giá trị cực đại của đạo hàm cấp một tương đương với giao điểm của đạo hàm cấp hai và trục hoành, điểm này còn được gọi là điểm về không (zero crossing).
 
-![](images/2023/knowledge_sharing/First_Derivative_and_Second_Derivative_of_Edges.png)
+![](./images/First_Derivative_and_Second_Derivative_of_Edges.png)
 
 _Hình 9: Đồ thị đầu tiên biểu diễn giá trị mức độ xám của mỗi pixel trong không gian 1 chiều (xem giá trị này là một hàm liên tục), đồ thị thứ hai là đạo hàm cấp một của giá trị này, đồ thị cuối cùng là đạo hàm cấp hai của giá trị này. Ảnh tham khảo [tại đây](http://csundergrad.science.uoit.ca/courses/cv-notes/notebooks/08-edge-detection.pdf)._
 
@@ -289,7 +262,7 @@ Tuy mang lại kết quả tốt trong trường hợp lý tưởng, các toán 
 
 Để có thể hình dung rõ ràng hơn về tầm ảnh hưởng của nhiễu đến bài toán nhận diện cạnh, chúng ta hãy cùng nhau quan sát bức hình dưới đây. Lưu ý rằng chúng ta đang giả sử bức ảnh ta đang xét là 1D.
 
-![](images/2023/knowledge_sharing/Effect_of_Noise_a.png)
+![](./images/Effect_of_Noise_a.png)
 
 _Hình 10: Hình 1, 2: Đồ thị biểu diễn một cạnh và đạo hàm cấp một của của nó. Hình 3, 4: Đồ thị biểu diễn cạnh tương ứng đã được thêm nhiễu và đạo hàm cấp một của nó. Ảnh tham khảo [tại đây](https://cs.brown.edu/people/pfelzens/engn1610/edge-pics.pdf)._
 
@@ -297,7 +270,7 @@ Ta thấy rằng với sự xuất hiện của nhiễu, ta không thể xác đ
 
 Để khắc phục tình trạng này, ta sử dụng Gaussian filter để loại bỏ nhiễu trước khi tính đạo hàm. Kết quả thu được khả quan hơn rất nhiều:
 
-![](images/2023/knowledge_sharing/Effect_of_noise_b.png)
+![](./images/Effect_of_noise_b.png)
 
 _Hình 11: Đồ thị biểu diễn cạnh sau khi được khử nhiễu bởi Gaussian filter và đạo hàm cấp một của nó. Ảnh tham khảo [tại đây](https://cs.brown.edu/people/pfelzens/engn1610/edge-pics.pdf)._
 
@@ -305,13 +278,13 @@ _Hình 11: Đồ thị biểu diễn cạnh sau khi được khử nhiễu bởi
 
 Một cách tự nhiên, ta rút ra quy trình tìm đạo hàm của bức ảnh như sau: dùng Gaussian kernel để thực hiện phép tích chập lên ảnh đang bị nhiễu, sau đó tính đạo hàm đối với bức ảnh đã được khử nhiễu.
 
-![](images/2023/knowledge_sharing/Derivative_Theorem_of_Convolution.png)
+![](./images/Derivative_Theorem_of_Convolution.png)
 
 _Hình 12: Các bước của một bài toán nhận diện cạnh đối với ảnh nhiễu (Cách 1: Lấy đạo hàm của ảnh sau khi đã áp dụng Gaussian filter cho ảnh). Ảnh tham khảo [tại đây](http://vision.stanford.edu/teaching/cs131_fall1718/files/05_edges.pdf)._
 
 Tuy nhiên, ta có thể rút gọn quy trình này bằng cách lấy đạo hàm của Gaussian kernel để tạo thành một kernel mới, sau đó dùng phép tích chập đối với kernel này và bức ảnh gốc (có chứa nhiễu). Quy trình này giúp ta tiết kiệm một lượng lớn thời gian vì thông thường kích thước của bức ảnh lớn hơn kích thước của kernel rất nhiều. Một trường hợp mà việc lấy đạo hàm của Gaussian kernel đặc biệt hữu dụng đó là khi ta muốn áp dụng kernel này cho nhiều bức ảnh khác nhau.
 
-![](images/2023/knowledge_sharing/Derivative_Theorem_of_Convolution_b.png)
+![](./images/Derivative_Theorem_of_Convolution_b.png)
 
 _Hình 13: Các bước của một bài toán nhận diện cạnh đối với ảnh nhiễu (Cách 2: Lấy đạo hàm của Gaussian kernel, sau đó mới áp dụng kernel này cho ảnh). Ảnh tham khảo [tại đây](http://vision.stanford.edu/teaching/cs131_fall1718/files/05_edges.pdf)._
 
@@ -340,7 +313,7 @@ $$ \\begin{aligned} \\nabla^2g(x,y) & = \\frac{1}{2 \\pi \\sigma^2}(\\frac{x^2}{
 
 Thuật toán trên được gọi là Laplacian of Gausian (LoG) hay Marr-Hildreth detector (thuật toán được đề xuất bởi D. Marr và E. Hildreth vào năm 1980). Toán tử LoG còn được gọi là toán tử Mexican Hat vì hình dạng đặc biệt của nó:
 
-![](images/2023/knowledge_sharing/Mexican_Hat.png)
+![](./images/Mexican_Hat.png)
 
 _Hình 14: Hình dạng của Gaussian kernel sau khi được áp dụng toán tử Laplacian giống như một chiếc mũ. Ảnh tham khảo [tại đây](https://hannibunny.github.io/orbook/preprocessing/04gaussianDerivatives.html)._
 
@@ -355,7 +328,7 @@ Trước khi đi vào thuật toán cụ thể, chúng ta cùng nhau tìm hiểu
 
 Như chúng ta đã biết, việc sử dụng đạo hàm cấp một cho bài toán nhận diện cạnh đòi hỏi ta phải xác định một ngưỡng nhất định để nhận diện một pixel với độ lớn gradient bất kì có là cạnh hay không. Đây là công việc khá đau đầu bởi nếu chọn một ngưỡng thấp, sẽ có rất nhiều pixel được nhận diện là cạnh, đặc biệt ở những nơi mà sự thay đổi đạo hàm diễn ra một cách từ từ do cạnh đã bị làm mờ khi lọc nhiễu hoặc do hạn chế nhất định của các loại máy ảnh. Nhưng nếu chọn một ngưỡng cao, ta sẽ bị mất rất nhiều pixel lẽ ra phải được dự đoán là cạnh. Bạn đọc có thể tham khảo bức hình bên dưới.
 
-![](images/2023/knowledge_sharing/Where_is_the_Edge.png)
+![](./images/Where_is_the_Edge.png)
 
 _Hình 15: Ảnh thu được sau khi tính toán độ lớn gradient của từng pixel trong ảnh gốc. Ảnh tham khảo [tại đây](https://cs.brown.edu/people/pfelzens/engn1610/edge-pics.pdf)._
 
@@ -365,13 +338,13 @@ Trong bài toán nhận diện cạnh thì việc xác định chính xác vị 
 
 Hình dưới đây giúp ta hình dung rõ hơn về thuật toán này:
 
-![](images/2023/knowledge_sharing/Nonmaxima_Suppressioin.png)
+![](./images/Nonmaxima_Suppressioin.png)
 
 _Hình 16: Ví dụ về thuật toán non-maxima suppression. Pixel ở vị trí chấm xanh trong hình thứ nhất được giữ lại để xét cạnh, pixel tương ứng trong hình thứ hai thì không. Ảnh tham khảo [tại đây](http://csundergrad.science.uoit.ca/courses/cv-notes/notebooks/08-edge-detection.pdf)._
 
 Ở trường hợp đầu tiên, pixel ta đang xét có giá trị độ lớn gradient đạt cực đại theo hướng gradient của pixel này (ta có thể biết giá trị này có đạt cực đại hay không bằng cách so sánh pixel này với hai pixel lân cận theo hướng tương ứng). Vì thế, ta giữ lại pixel này, để ý rằng giá trị tại pixel này không đổi trước và sau nonmaxima suppression. Ở trường hợp thứ hai, do pixel này có giá trị độ lớn gradient nhỏ hơn pixel bên phải của nó theo hướng gradient, nên ta không giữ lại pixel này cho bước tiếp theo. Sau non-maxima suppression, giá trị của pixel này được đặt về 0. Lưu ý rằng thuật toán non-maxima suppression chỉ cho đầu ra là liệu một pixel có được tiếp tục giữ lại để xét là cạnh hay không, nó không đảm bảo các pixel được giữ lại thì chắc chắn là cạnh.
 
-![](images/2023/knowledge_sharing/Non-maxima-suppression-result.png)
+![](./images/Non-maxima-suppression-result.png)
 
 _Hình 17: Ảnh thu được trước và sau non-maxima suppression. Ảnh tham khảo [tại đây](http://csundergrad.science.uoit.ca/courses/cv-notes/notebooks/08-edge-detection.pdf)._
 
@@ -381,7 +354,7 @@ Quay lại vấn đề chọn ngưỡng: việc chọn một ngưỡng cao hay t
 
 Ý tưởng của hysteresis thresholding là ta sẽ chọn 2 ngưỡng thay vì 1 ngưỡng: các pixel có giá trị nằm trên ngưỡng cao thì chắc chắn là cạnh (sure-edge pixel), các pixel có giá trị nằm dưới ngưỡng thấp thì chắc chắn không là cạnh. Sau đó ta bắt đầu xét các pixel nằm giữa hai ngưỡng này, những pixel nào là lân cận của các "sure-edge pixel" sẽ được nhận diện là cạnh, điều ngược lại đối với những pixel không là lân cận của "sure-edge pixel" nào cả.
 
-![](images/2023/knowledge_sharing/Hysteresis_Thresholding.png)
+![](./images/Hysteresis_Thresholding.png)
 
 _Hình 18: Ví dụ về thuật toán hysteresis thresholding. Ảnh tham khảo [tại đây](https://theailearner.com/tag/hysteresis-thresholding/)._
 
@@ -389,7 +362,7 @@ Quan sát hình trên, ta thấy rằng A và B chắc chắn là cạnh vì gi�
 
 Chúng ta cùng so sánh thuật toán hysteresis thresholding với cách chọn ngưỡng thông thường:
 
-![](images/2023/knowledge_sharing/Hysteresis_thresholding_result.png)
+![](./images/Hysteresis_thresholding_result.png)
 
 _Hình 19: Hình 1: Kết quả thu được khi áp dụng hysteresis thresholding. Hình 2: Kết quả thu được khi chỉ dùng một ngưỡng cao. Hình 3: Kết quả thu được khi chỉ dùng một ngưỡng thấp._
 
@@ -404,7 +377,7 @@ Ta thấy rằng thuật toán hysteresis thresholding vừa đảm bảo không
 3.  Dùng non-maxima suppresion để "làm mỏng" cạnh, tức loại bỏ các pixel không cần thiết
 4.  Dùng hysteresis thresholding để nhận diện cạnh
 
-![](images/2023/knowledge_sharing/Canny_Edge_Detector_result.png)
+![](./images/Canny_Edge_Detector_result.png)
 
 _Hình 20: Kết quả thu được của thuật toán Canny Edge Detection đối với các cách chọn ngưỡng khác nhau. Hình 1: Kết quả thu được sau khi tính toán độ lớn gradient (ảnh được sử dụng để phân ngưỡng). Hình 2, 3, 4: Kết quả thu được sau khi áp dụng hysteresis thresholding với các ngưỡng $T\_1$, $T\_2$ khác nhau._
 
@@ -427,5 +400,7 @@ Qua bài viết này, bạn đọc đã có một cái nhìn toàn cảnh về b
 1.  Jain, R., Kasturi, R., & Schunck, B. G. (1995). _Machine vision_ (Vol. 5, pp. 309-364). New York: McGraw-hill.
 2.  _First Principles of Computer Vision_. (n.d.). [https://fpcv.cs.columbia.edu/](https://fpcv.cs.columbia.edu/)
 3.  _6.2. Phép Tích chập cho Ảnh — Đắm mình vào Học Sâu 0.14.4 documentation_. (n.d.). [https://d2l.aivivn.com/chapter\_convolutional-neural-networks/conv-layer\_vn.html](https://d2l.aivivn.com/chapter_convolutional-neural-networks/conv-layer_vn.html)
+<a name='ref_4'></a>
+
 4.  Nalwa, V. S. (1994). _A guided tour of computer vision_. Addison-Wesley Longman Publishing Co., Inc.
 5.  _OpenCV: Canny Edge Detection_. (n.d.). [https://docs.opencv.org/3.4/da/d22/tutorial\_py\_canny.html](https://docs.opencv.org/3.4/da/d22/tutorial_py_canny.html)
