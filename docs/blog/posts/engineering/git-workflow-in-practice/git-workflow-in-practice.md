@@ -1,10 +1,19 @@
-# Sample project
+---
+date: 2023-10-15
+authors:
+    - quannhg
+categories:
+  - Engineering
+comments: true
+---
+
+# Git workflow in practice
+This is the sample project for this article [Git workflow](../git-workflow/git-workflow.md).
+
+<!-- more -->
 
 ## Setup project
-
-First, make sure you already have Git installed on your computer and a GitHub account
-
-To check git is installed:
+First, make sure you already have Git installed on your computer and a GitHub account. To check git is installed:
 
 ```bash
 git --version
@@ -26,29 +35,28 @@ git config --global user.email
 
 You need to create a repository in GitHub, let's give it a git-workflow-example name.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled.png)
+![Untitled](./images/Untitled.png)
 
-Tick at the “Add a README file” option. Let all remaining setting is default then click the ‘Create repository’ button.
+Tick at the **“Add a README file”** option. Let all remaining setting is default then click the **"Create repository"** button.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%201.png)
+![Untitled](./images/Untitled%201.png)
 
 Save the link to the repository, you will need it later, with this tutorial, we will use HTTPS.
 
 In the upper left, click on the branch button.
 
-Click on the View All branch.
+Click on the **View all branches**.
 
-Click new branch, naming branch is staging, source is main.
+Click **New branch**, naming branch is **staging**, source is **main**.
 
-Go to setting → Branches → Add rule.
+Go to **Settings → Branches → Add rule**.
 
 Create two sets of rules for main and staging, with the following rule chosen:
 
 - Require a pull request before merging.
 - Require status checks to pass before merging.
     - Require branches to be up to date before merging.
-
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%202.png)
+![Untitled](./images/Untitled%202.png)
 
 These rules make sure our project follows the git workflow.
 
@@ -99,7 +107,7 @@ git push origin -u feature/adding-hello-world-line
 
 This may ask you for credentials if this is the first time you are using Git, you can follow [this](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) to create a GitHub personal access token to identify.
 
-Notice: GitHub removed Support for password authentication on August 13, 2021.
+**<u>Notice</u>**: GitHub removed **Support for password authentication** on August 13, 2021.
 
 Before identifying, you can run this to avoid entering credentials multiple times:
 
@@ -109,11 +117,11 @@ git config credential.helper store
 
 Go to your project in GitHub and create a Pull Request. Changing base branch to staging.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%203.png)
+![Untitled](./images/Untitled%203.png)
 
 In practice, you will receive some reviews from others. For now, merge the new branch to staging then delete it.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%204.png)
+![Untitled](./images/Untitled%204.png)
 
 ### Add release GitHub action
 
@@ -129,7 +137,7 @@ git pull
 git checkout -b feature/add-release-action
 ```
 
-The branch *feature/adding-hello-world-line has been merged to staging, so you can delete it:*
+The branch ***feature/adding-hello-world-line*** has been merged to staging, so you can delete it:
 
 ```bash
 git branch -d feature/adding-hello-world-line
@@ -142,7 +150,7 @@ mkdir .github && cd $_
 mkdir workflows && cd $_
 ```
 
-In the workflows folder, create a file name release.yml and give the file permission to edit content:
+In the workflows folder, create a file name **release.yml** and give the file permission to edit content:
 
 ```bash
 touch release.yml
@@ -151,7 +159,7 @@ chmod +w release.yml
 
 You can use any editor you want, this tutorial will use vim to change file content.
 
-Open file with vim:
+Open file with Vim:
 
 ```bash
 vim release.yml
@@ -190,7 +198,7 @@ jobs:
           pull-request-header: 'Bot (:robot:) requested to create a new release on ${{ github.ref_name }}'
 ```
 
-Entering ****:wq**** to save and close the file.
+Entering **:wq** to save and close the file.
 
 Commit the change and push the new feature branch to the remote repo:
 
@@ -202,15 +210,15 @@ git push origin -u feature/add-release-action
 
 Go to GitHub, create and merge a pull request of the new branch to staging.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%205.png)
+![Untitled](./images/Untitled%205.png)
 
 To GitHub action can release a new version in your repository, you need to allow action can create and approve pull requests.
 
 Go to the settings of your repository. 
 
-Go to Action > General, and tick “Allow GitHub Actions can create pull requests or submit approving pull request reviews” at the end of the page. Save the setting.
+Go to **Action > General**, and tick **“Allow GitHub Actions can create pull requests or submit approving pull request reviews”** at the end of the page. Save the setting.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%206.png)
+![Untitled](./images/Untitled%206.png)
 
 Okay, now GitHub action will auto-release a new version of our app whenever any branch merges with the main branch.
 
@@ -218,15 +226,15 @@ Okay, now GitHub action will auto-release a new version of our app whenever any 
 
 It may need more features, and more processes to merge code from staging to main and release a new version. In this tutorial, simply create a pull request and merge staging to the main.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%207.png)
+![Untitled](./images/Untitled%207.png)
 
 The GitHub action will create new pull request with information about our new release, and merge it to the main.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%208.png)
+![Untitled](./images/Untitled%208.png)
 
 You have just finished creating a new version using the git workflow. The CHANGELOG.md file contains information on our releases.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%209.png)
+![Untitled](./images/Untitled%209.png)
 
 ## Hotfix and Bugfix
 
@@ -236,11 +244,11 @@ Image your co-worker’s release a new version containing a script to automate a
 
 The expected render result is.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2010.png)
+![Untitled](./images/Untitled%2010.png)
 
 Let's see [the repository](https://github.com/TickLabVN/git-workflow).
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2011.png)
+![Untitled](./images/Untitled%2011.png)
 
 Oop! The rendered result is different from what we expected.
 
@@ -248,7 +256,7 @@ Oop! The rendered result is different from what we expected.
 
 In this section, we will fix this bug using git-workflow. Because we don’t have permission to directly modify this repository, we will fork this repository to change, push, and create pull requests.
 
-Click the “Fork” button in the upper right, and give it a new name *********git-workflow-sample********* to distinguish the one you created above. Let all remaining setting is the default.
+Click the **“Fork”** button in the upper right, and give it a new name ***git-workflow-sample*** to distinguish the one you created above. Let all remaining setting is the default.
 
 Clone the new repository we have just forked to make some changes in that code:
 
@@ -263,7 +271,7 @@ The first thing we need to do when my newest code has wrong behavior is to recov
 
 See the [CHANGELOG.md](https://github.com/TickLabVN/git-workflow/blob/main/CHANGELOG.md) to know more details about your co-worker’s release.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2012.png)
+![Untitled](./images/Untitled%2012.png)
 
 We will make a new hotfix branch back to version 1.0.0 before your co-worker's script is added to let the user continue using our service:
 
@@ -277,7 +285,7 @@ See the history of commits:
 git log
 ```
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2013.png)
+![Untitled](./images/Untitled%2013.png)
 
 We will revert the code to version 1.0.0 is released:
 
@@ -305,11 +313,11 @@ Push our change to the remote repository and create a new pull request:
 git push -u origin hotfix/back-to-before-newline-script-is-added
 ```
 
-This will create a hotfix/back-to-before-newline-script-is-added branch in your remote repository and push your code to this branch.
+This will create a **hotfix/back-to-before-newline-script-is-added** branch in your remote repository and push your code to this branch.
 
 Create pull requests to the main and staging branches. Our user can continue using our service after your pull request is approved and merged.
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2014.png)
+![Untitled](./images/Untitled%2014.png)
 
 ### Bugfix branch
 
@@ -351,7 +359,7 @@ See the current content of README.md:
 cat README.md
 ```
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2015.png)
+![Untitled](./images/Untitled%2015.png)
 
 Then see the content of newline.sh:
 
@@ -359,7 +367,7 @@ Then see the content of newline.sh:
 cat newline.sh
 ```
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2016.png)
+![Untitled](./images/Untitled%2016.png)
 
 Notice in the “append the new text to the file” section, your co-worker used ‘>’, the operator will overwrite the content of the file. Try changing it to the ‘>>’ operator to see if it resolves the problem.
 
@@ -391,7 +399,7 @@ See content of README.md:
 cat README.md
 ```
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2017.png)
+![Untitled](./images/Untitled%2017.png)
 
 Nice, now the script works correctly.
 
@@ -405,6 +413,6 @@ git push -u origin bugfix/let-newline-script-append-newline-to-README.md-file
 
 Create a pull request to merge your change to the staging branch
 
-![Untitled](../assets/Git%20workflow%2016d1a589e8024abc8e064c1d19034e58/Untitled%2018.png)
+![Untitled](./images/Untitled%2018.png)
 
-Good job! You have just completely debugged a problem with the git workflow
+Good job! You have just completely debugged a problem with the git workflow.
