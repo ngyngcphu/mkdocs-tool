@@ -262,7 +262,7 @@ GitHub is a platform for software developers to collaborate and manage not just 
 ![Two subtasks inside an issue, while editing](./images/subtasks.png)
 
 #### Manage issue via CLI
-GitHub also offers managing your issues in your repository and project spreadsheet directly from CLI.
+GitHub also offers issues and project management directly from CLI.
 - Installation: [GitHub CLI](https://cli.github.com/).  
 - Command guideline: [GitHub Issues](https://cli.github.com/manual/gh_issue) || [GitHub Project](https://cli.github.com/manual/gh_project)
 
