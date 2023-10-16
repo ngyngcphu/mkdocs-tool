@@ -1,11 +1,16 @@
 site_name: TickLab - Start here, go anywhere
 site_url: https://ngyngcphu.github.io/mkdocs-tool/
 site_author: Nguyen Ngoc Phu
+site_description: Summary of all knowledge sharing articles covering the fields of scientific research and project development.
 
 repo_name: ngyngcphu/mkdocs-tool
 repo_url: https://github.com/ngyngcphu/mkdocs-tool
+
+copyright: Copyright &copy; 2023 TickLab. Made by Engineering team.
+
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.instant
     - navigation.tracking
@@ -13,7 +18,10 @@ theme:
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.footer
     - toc.follow
+    - content.code.copy
+    - content.code.annotate
   favicon: assets/TickLab-logo.svg
   logo: assets/TickLab-logo.svg
   palette:
@@ -31,22 +39,49 @@ theme:
         name: Switch to light mode
 
 nav:
-  - Home: index.md
-  - Git workflow: 
-    - git-workflow/index.md
-    - Git-branch workflow: git-workflow/git-branch-workflow.md
-    - Github Project: git-workflow/github-project.md
-    #- Resolve conflict: git-workflow/resolve-conflict.md
-    - Sample Project: git-workflow/sample-project.md
+  - Trang chủ: index.md
+  - Bài viết:
+      - blog/index.md
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TickLabVN
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/ticklab.vn
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/@TickLab
+
+extra_css:
+  - stylesheets/extra.css
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+extra_javascript:
+  - javascripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+plugins:
+  - blog:
+      categories_allowed:
+        - Engineering
+        - Research
+      pagination_per_page: 5
+      post_url_format: "{slug}"
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - search
 
 markdown_extensions:
   - abbr
   - attr_list
+  - def_list
   - footnotes
   - md_in_html
   - tables
   - toc:
       permalink: true
+      toc_depth: 3
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.betterem:
@@ -62,6 +97,8 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

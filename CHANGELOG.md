@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.4.1](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.4.0...v1.4.1) (2023-10-01)
+
+
+### Bug Fixes
+
+* **git-workflow:** add directory of sample project in mkdocs.yml ([ada49ec](https://github.com/ngyngcphu/mkdocs-tool/commit/ada49ec75d4744705fd148539b5ff65388c3ddc1))
+
+## [1.4.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.3.0...v1.4.0) (2023-10-01)
+
+
+### Features
+
+* **git-workflow:** add sample project for git workflow ([c61b145](https://github.com/ngyngcphu/mkdocs-tool/commit/c61b145eab400e692563142dd4ba34b2d1e05467))
+
+## [1.3.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.2.0...v1.3.0) (2023-09-15)
+
+
+### Features
+
+* github project ([9a7e6a1](https://github.com/ngyngcphu/mkdocs-tool/commit/9a7e6a1f0ab89a97d265524a4fb4aed90fa8e67b))
+
 ## [1.2.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.1.0...v1.2.0) (2023-09-08)
 
 
