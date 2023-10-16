@@ -8,7 +8,10 @@ comments: true
 ---
 
 # Git workflow in practice
-This is the sample project for this article [Git workflow](../git-workflow/git-workflow.md).
+This is the sample project for [Git workflow](../git-workflow/git-workflow.md) article. If you haven't already read it, it's recommended to give it a glance before attempting this project. Upon completion of this project, you will:
+
+- Gain a clearer understanding of how Git workflow operates in practice.
+- Be exposed to a simple debugging process.
 
 <!-- more -->
 
@@ -125,7 +128,7 @@ In practice, you will receive some reviews from others. For now, merge the new b
 
 ### Add release GitHub action
 
-This time, you are given to add GitHub action to release a new version whenever the staging branch is merged to the main branch.
+This time, you are asked to add GitHub action to release a new version whenever the staging branch is merged to the main branch.
 
 If you want to know more about GitHub action, try visiting [this](https://github.com/features/actions).
 
@@ -254,7 +257,7 @@ Oop! The rendered result is different from what we expected.
 
 ### Fork repository
 
-In this section, we will fix this bug using git-workflow. Because we don’t have permission to directly modify this repository, we will fork this repository to change, push, and create pull requests.
+In this section, we will address this bug using a Git workflow. Since we don't have permission to directly modify this repository, we will fork it, make the necessary changes, push them, and create pull requests.
 
 Click the **“Fork”** button in the upper right, and give it a new name ***git-workflow-sample*** to distinguish the one you created above. Let all remaining setting is the default.
 
@@ -267,13 +270,13 @@ cd git-workflow-sample
 
 ### Hotfix branch
 
-The first thing we need to do when my newest code has wrong behavior is to recover as fast as possible so that users can remain using our service.
+The first thing we need to do when our application exhibits incorrect behavior is to resolve the issue as quickly as possible, ensuring that users can continue using our service.
 
 See the [CHANGELOG.md](https://github.com/TickLabVN/git-workflow/blob/main/CHANGELOG.md) to know more details about your co-worker’s release.
 
 ![Untitled](./images/Untitled%2012.png)
 
-We will make a new hotfix branch back to version 1.0.0 before your co-worker's script is added to let the user continue using our service:
+We will create a new hotfix branch, reverting back to version 1.0.0, to ensure that users can continue using our service before your co-worker's script is added.
 
 ```bash
 git checkout -b 'hotfix/back-to-before-newline-script-is-added' main
@@ -369,7 +372,7 @@ cat newline.sh
 
 ![Untitled](./images/Untitled%2016.png)
 
-Notice in the “append the new text to the file” section, your co-worker used ‘>’, the operator will overwrite the content of the file. Try changing it to the ‘>>’ operator to see if it resolves the problem.
+In the "append the new text to the file" section, your co-worker used the '>' operator, which overwrites the content of the file. Try changing it to the '>>' operator to see if it resolves the problem.
 
 Give [newline.sh](http://newline.sh) file permission to write and execute:
 
