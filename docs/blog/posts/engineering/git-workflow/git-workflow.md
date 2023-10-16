@@ -279,12 +279,10 @@ GitHub provides various data types to add more information to your task:
 ![Additional metadata after converting into issue](./images/metadata_2.png)
 
 
-**Manage issue via GLI:**
-
-* Installation: [GitHub CLI](https://cli.github.com/).  
-* Command guideline: [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue)
+**Manage issue via CLI:**
+> Installation: [GitHub CLI](https://cli.github.com/).  
+> Command guideline: [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue)
 
 > **Limitation:** GitHub free plan would limit some features if you make your repository    private, some might be:
-
 >- Can only assign 1 member to an issue
 >- Can't track both private and public repository in 1 project
