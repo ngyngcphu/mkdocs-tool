@@ -238,7 +238,7 @@ Also, let's create a `build` job to build a package on github container registry
 
 ## Github Project
 GitHub is a platform for software developers to collaborate and manage not just their code but the overall project planning and task-tracking process through a feature called “GitHub Project”. A project provides various views: spreadsheet, task board, or roadmap integrated with your issues and pull requests, which help your management process always stay up-to-date with the developing process.
-## Setting up projects
+### Setting up projects
 1. We can navigate to the **“Projects”** tab from the header.
 ![Project Tab accessing via organization](./images/project_in_org.png)
 ![Project Tab accessing via personal profile](./images/project_in_profile.png)
@@ -247,8 +247,8 @@ GitHub is a platform for software developers to collaborate and manage not just 
 ![Template for creating projects](./images/view_options.png)
 4. Play around with different types of views that your team would be more comfortable with.
 
-## Creating and managing tasklist
-### Getting familiar with issues
+### Creating and managing tasklist
+#### Getting familiar with issues
 1. A task **before converting into issues** is just a draft task that doesn’t belong to any repository. 
 ![A draft task before converting into issue](./images/draft_task.png)
 
@@ -261,7 +261,13 @@ GitHub is a platform for software developers to collaborate and manage not just 
 4. Use the checklist symbol before mentioning an issue ID so that it can display similar to the above.
 ![Two subtasks inside an issue, while editing](./images/subtasks.png)
 
-### Add detailed information to your tasks
+#### Manage issue via CLI
+GitHub also offers issues and project management directly from CLI.
+- Installation: [GitHub CLI](https://cli.github.com/).  
+- Command guideline: [GitHub Issues](https://cli.github.com/manual/gh_issue) || [GitHub Project](https://cli.github.com/manual/gh_project)
+
+
+#### Add detailed information to your tasks
 GitHub provides various data types to add more information to your task:
 
 - A date field to track target ship dates.
@@ -278,13 +284,6 @@ GitHub provides various data types to add more information to your task:
 - A pull request  
 ![Additional metadata after converting into issue](./images/metadata_2.png)
 
-
-**Manage issue via GLI:**
-
-* Installation: [GitHub CLI](https://cli.github.com/).  
-* Command guideline: [https://cli.github.com/manual/gh_issue](https://cli.github.com/manual/gh_issue)
-
 > **Limitation:** GitHub free plan would limit some features if you make your repository    private, some might be:
-
 >- Can only assign 1 member to an issue
 >- Can't track both private and public repository in 1 project
