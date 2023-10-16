@@ -1,5 +1,27 @@
 # Changelog
 
+## [2.0.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.4.1...v2.0.0) (2023-10-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **release:** edge-detection post
+
+### Features
+
+* **blog:** add edge-detection post ([d470d95](https://github.com/ngyngcphu/mkdocs-tool/commit/d470d9505572cbd1890cdd7f979c22b12fd5cc63))
+* **blog:** custom blog format for docs ([f5a30ee](https://github.com/ngyngcphu/mkdocs-tool/commit/f5a30ee02614c7c39f18bf70203927eca3874ed9))
+* **home:** add home page for docs ([b385b68](https://github.com/ngyngcphu/mkdocs-tool/commit/b385b687793d815e68761df6380b4edd88df7440))
+* **release:** edge-detection post ([a0cbdfa](https://github.com/ngyngcphu/mkdocs-tool/commit/a0cbdfa2aa892a962b064e41cd524d7b133c8032))
+* **revision-date:** add mkdocs-git-revision-date-localized-plugin ([df11096](https://github.com/ngyngcphu/mkdocs-tool/commit/df1109613f556d1ce5be2c29c0146a315038425b))
+* **social:** add social media of TickLab ([afa1874](https://github.com/ngyngcphu/mkdocs-tool/commit/afa187498f193b2180bdcaf4627d567e6bf14b19))
+
+
+### Bug Fixes
+
+* **config:** remove rss plugin in mkdocs.yml ([d5b7f21](https://github.com/ngyngcphu/mkdocs-tool/commit/d5b7f21af1596f27e16db774b7ea9cd7a8249ed6))
+* **content:** reformat and recustom for content of posts ([770acc0](https://github.com/ngyngcphu/mkdocs-tool/commit/770acc078e0ae97f326900a4565f3389d26e312d))
+
 ## [1.4.1](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.4.0...v1.4.1) (2023-10-01)
 
 
