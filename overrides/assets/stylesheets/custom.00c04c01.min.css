@@ -325,26 +325,21 @@
     }
 }
 
-.mdx-hero__content {
-    padding-bottom: 6rem
-}
-
 @media screen and (min-width:60em) {
     .mdx-hero {
-        align-items: stretch;
+        align-items: center;
+        justify-content: center;
         display: flex
     }
 
     .mdx-hero__content {
-        margin-top: 3.5rem;
-        max-width: 20rem;
-        padding-bottom: 14vw
+        max-width: 23rem;
     }
 
     .mdx-hero__image {
         order: 1;
         transform: translateX(1rem);
-        width: 38rem;
+        width: 36rem;
     }
 }
 

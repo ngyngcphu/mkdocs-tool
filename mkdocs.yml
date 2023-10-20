@@ -1,7 +1,7 @@
 site_name: TickLab - Start here, go anywhere
 site_url: https://ngyngcphu.github.io/mkdocs-tool/
 site_author: Nguyen Ngoc Phu
-site_description: Summary of all knowledge sharing articles covering the fields of scientific research and project development.
+site_description: Tổng hợp nội dung chia sẻ kiến thức trong quá trình nghiên cứu khoa học và phát triển dự án tại các phòng ban của TickLab.
 
 repo_name: ngyngcphu/mkdocs-tool
 repo_url: https://github.com/ngyngcphu/mkdocs-tool
@@ -22,6 +22,9 @@ theme:
     - toc.follow
     - content.code.copy
     - content.code.annotate
+    - search.suggest
+    - search.highlight
+    - search.share
   favicon: assets/TickLab-logo.svg
   logo: assets/TickLab-logo.svg
   palette:
@@ -91,8 +94,8 @@ markdown_extensions:
   - pymdownx.tilde
   - pymdownx.details
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
