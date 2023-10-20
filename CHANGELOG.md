@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.1.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v2.0.0...v2.1.0) (2023-10-20)
+
+
+### Features
+
+* **home:** custom layout of home page not scrolling ([83f4fd9](https://github.com/ngyngcphu/mkdocs-tool/commit/83f4fd96a696b057bbabfa13bf9ce83e99ac6c65))
+
+
+### Bug Fixes
+
+* **katex:** specify document.body instead of body ([7835a21](https://github.com/ngyngcphu/mkdocs-tool/commit/7835a2118faf4e32a89b262ede66640034db92ff))
+* **navbar:** add shadow for navigation bar ([ff32466](https://github.com/ngyngcphu/mkdocs-tool/commit/ff3246647ad152e2c862b3c025aa4441af8ac693))
+
 ## [2.0.0](https://github.com/ngyngcphu/mkdocs-tool/compare/v1.4.1...v2.0.0) (2023-10-16)
 
 
